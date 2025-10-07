@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mercado de Livros Raros</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --auburn: #a62639;
+        --amaranth: #db324d;
+        --wenge: #56494e;
+        --taupe-gray: #a29c9b;
+        --chocolate-cosmos: #511c29;
+        --primary-color: var(--wenge);
+        --secondary-color: var(--amaranth);
+        --accent-color: var(--auburn);
+        --dark-color: var(--chocolate-cosmos);
+        --light-color: #f8f9fa;
+        --text-light: #ffffff;
+        --text-muted: #6c757d;
+      }
+
+      body {
+        font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          var(--chocolate-cosmos) 0%,
+          var(--wenge) 50%,
+          var(--taupe-gray) 100%
+        );
+        color: var(--text-light);
+        display: flex;
+        flex-direction: column;
+        line-height: 1.6;
+      }
+
+      .navbar {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .navbar-brand {
+        font-weight: 600;
+        color: var(--primary-color);
+        font-size: 1.4rem;
+        letter-spacing: -0.02em;
+      }
+
+      .navbar-nav .nav-link {
+        color: var(--wenge);
+        font-weight: 500;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-nav .nav-link:hover {
+        color: var(--amaranth);
+        background: rgba(219, 50, 77, 0.1);
+      }
+
+      .hero-section {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(20px);
+        padding: 80px 0;
+        margin: 40px 20px;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .hero-title {
+        color: var(--text-light);
+        font-weight: 700;
+        font-size: 3.5rem;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        letter-spacing: -0.02em;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-subtitle {
+        color: rgba(255, 255, 255, 0.85);
+        max-width: 600px;
+        margin: 0 auto;
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: 1.7;
+      }
+
+      .card {
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.95);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .form-control {
+        border-radius: 12px;
+        border: 2px solid rgba(162, 156, 155, 0.2);
+        padding: 14px 18px;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+        font-size: 0.95rem;
+      }
+
+      .form-control:focus {
+        border-color: var(--amaranth);
+        box-shadow: 0 0 0 0.2rem rgba(219, 50, 77, 0.15);
+        background: rgba(255, 255, 255, 1);
+      }
+
+      .form-control::placeholder {
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--amaranth) 0%,
+          var(--auburn) 100%
+        );
+        border: none;
+        border-radius: 12px;
+        padding: 14px 32px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 16px rgba(219, 50, 77, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(219, 50, 77, 0.4);
+        background: linear-gradient(
+          135deg,
+          var(--auburn) 0%,
+          var(--amaranth) 100%
+        );
+      }
+
+      .btn-outline-danger {
+        border-radius: 12px;
+        padding: 10px 24px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        border: 2px solid var(--amaranth);
+        color: var(--amaranth);
+      }
+
+      .btn-outline-danger:hover {
+        background: var(--amaranth);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(219, 50, 77, 0.3);
+      }
+
+      .footer {
+        background: rgba(81, 28, 41, 0.95);
+        backdrop-filter: blur(20px);
+        color: var(--text-light);
+        padding: 50px 0;
+        margin-top: auto;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .alert {
+        border-radius: 16px;
+        border: none;
+        backdrop-filter: blur(10px);
+        font-weight: 500;
+      }
+
+      .alert-success {
+        background: rgba(40, 167, 69, 0.1);
+        color: #28a745;
+        border-left: 4px solid #28a745;
+      }
+
+      .alert-danger {
+        background: rgba(220, 53, 69, 0.1);
+        color: #dc3545;
+        border-left: 4px solid #dc3545;
+      }
+
+      .card-title {
+        color: var(--primary-color);
+        font-weight: 600;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+      }
+
+      .card-text {
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      .feature-icon {
+        color: var(--amaranth);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .spinner-border {
+        width: 1rem;
+        height: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand" href="/home">
+          <i class="fas fa-book-open me-2"></i>Mercado de Livros Raros
+        </a>
+        <a href="/login.html" class="btn btn-outline-danger">
+          <i class="fas fa-sign-in-alt me-1"></i>Área Administrativa
+        </a>
+      </div>
+    </nav>
+
+    <section class="hero-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h1 class="hero-title">Descubra Tesouros Literários</h1>
+            <p class="hero-subtitle mt-3">
+              Entre na nossa fila de espera para ter acesso exclusivo a livros
+              raros e edições especiais. Seja notificado quando uma obra
+              especial estiver disponível.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container flex-grow-1 mb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-header bg-transparent border-0 text-center py-4">
+              <h3 class="card-title mb-0" style="color: var(--primary-color)">
+                <i
+                  class="fas fa-user-plus me-2"
+                  style="color: var(--amaranth)"
+                ></i
+                >Cadastro na Fila de Espera
+              </h3>
+              <p class="text-muted mt-2">
+                Preencha seus dados para entrar na nossa lista de espera
+              </p>
+            </div>
+            <div class="card-body p-4">
+              <div id="alertContainer"></div>
+
+              <form id="formCliente" novalidate>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="cli_cpf" class="form-label">
+                      <i class="fas fa-id-card me-1"></i>CPF *
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cli_cpf"
+                      name="cli_cpf"
+                      maxlength="14"
+                      placeholder="000.000.000-00"
+                      required
+                    />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="cli_telefone" class="form-label">
+                      <i class="fas fa-phone me-1"></i>Telefone *
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cli_telefone"
+                      name="cli_telefone"
+                      required
+                      placeholder="(99) 99999-9999"
+                    />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="cli_nome" class="form-label">
+                    <i class="fas fa-user me-1"></i>Nome Completo *
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cli_nome"
+                    name="cli_nome"
+                    required
+                  />
+                  <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="mb-4">
+                  <label for="cli_email" class="form-label">
+                    <i class="fas fa-envelope me-1"></i>Email *
+                  </label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="cli_email"
+                    name="cli_email"
+                    required
+                    placeholder="seu@email.com"
+                  />
+                  <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="d-grid">
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-lg"
+                    id="btnSubmit"
+                  >
+                    <span id="btnText">
+                      <i class="fas fa-paper-plane me-2"></i>Entrar na Fila de
+                      Espera
+                    </span>
+                    <span
+                      id="btnSpinner"
+                      class="spinner-border spinner-border-sm me-2 d-none"
+                    ></span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-lg-5 mb-4">
+            <h5>
+              <i class="fas fa-book-open me-2"></i>Mercado de Livros Raros
+            </h5>
+            <p>
+              Conectamos colecionadores e amantes da literatura com tesouros
+              literários únicos e edições especiais.
+            </p>
+          </div>
+          <div class="col-lg-5 mb-4">
+            <h5><i class="fas fa-info-circle me-2"></i>Como Funciona</h5>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fas fa-check-circle me-2 text-success"></i>Cadastre-se
+                na nossa lista
+              </li>
+              <li>
+                <i class="fas fa-bell me-2 text-warning"></i>Seja notificado
+                sobre novos livros
+              </li>
+              <li>
+                <i class="fas fa-star me-2 text-primary"></i>Tenha acesso
+                exclusivo a edições raras
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <div class="text-center">
+          <p class="mb-0">
+            &copy; 2025 Mercado de Livros Raros. Todos os direitos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/clientes.js"></script>
+  </body>
+</html>

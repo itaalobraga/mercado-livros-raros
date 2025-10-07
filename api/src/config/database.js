@@ -8,6 +8,7 @@ const configuracaoBanco = {
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
+  timezone: "-03:00",
 };
 
 const pool = mysql.createPool(configuracaoBanco);

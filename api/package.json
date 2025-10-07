@@ -1,7 +1,7 @@
 {
-  "name": "mercado-livros-raros",
+  "name": "mercado-livros-raros-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "API para o sistema de mercado de livros raros",
   "main": "index.js",
   "type": "module",
   "scripts": {

@@ -1,0 +1,26 @@
+{
+  "name": "mercado-livros-raros-frontend",
+  "version": "1.0.0",
+  "description": "Frontend para o sistema de mercado de livros raros",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "livros",
+    "raros",
+    "mercado",
+    "frontend"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-session": "^1.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
